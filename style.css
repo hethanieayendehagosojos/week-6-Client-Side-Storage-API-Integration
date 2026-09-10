@@ -1,0 +1,205 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    transition: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.github-start main,
+body.github-start #map,
+body.github-start footer {
+    display: none;
+}
+
+body.home-ready main,
+body.home-ready #map,
+body.home-ready footer {
+    animation: reveal-home 0.6s ease both;
+}
+
+@keyframes reveal-home {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header .navbar {
+    min-height: 78px;
+    padding: 16px 0;
+    background-color: #0b4f8a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .navbar-brand {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+header .nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 10px 14px !important;
+}
+
+header .navbar-brand:hover,
+header .nav-link:hover {
+    color: #d9efff !important;
+}
+
+@media (max-width: 991.98px) {
+    header .navbar-collapse {
+        margin-top: 12px;
+        padding: 10px;
+        background-color: #083b68;
+        border-radius: 6px;
+    }
+
+    header .navbar-nav {
+        gap: 4px;
+    }
+}
+
+main {
+    text-align: center;
+}
+
+.name-box {
+    max-width: 600px;
+    margin: 40px auto 25px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid #0d6efd;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.name-box input {
+    margin: 15px 8px;
+    padding: 8px;
+}
+
+.name-box h2 {
+    font-size: 2.5rem;
+}
+
+.name-box label {
+    font-size: 1rem;
+}
+
+.welcome-message {
+    margin-top: 25px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.content-box {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 2px solid #0d6efd;
+    border-radius: 30px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation */
+nav a {
+    text-decoration: none;
+}
+
+/* Dark Mode */
+.dark {
+    background-color: #222;
+    color: white;
+}
+
+.dark section {
+    background-color: #222;
+}
+
+/* Weather */
+#weather {
+    min-height: 300px;
+}
+
+#weatherResult img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+#live-map {
+    height: 400px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.location-search {
+    display: flex;
+    gap: 8px;
+    max-width: 700px;
+    margin: 0 auto 10px;
+}
+
+.location-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+}
+
+.location-search button {
+    padding: 10px 18px;
+}
+
+.github-search {
+    display: flex;
+    gap: 8px;
+    max-width: 700px;
+    margin: 0 auto 20px;
+}
+
+.github-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+}
+
+.github-search button {
+    padding: 10px 18px;
+}
+
+.github-result {
+    min-height: 40px;
+    padding: 15px;
+    border: 1px solid #b8c7d9;
+    border-radius: 8px;
+}
+
+.github-result img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+
+@media (max-width: 576px) {
+    .github-search {
+        flex-direction: column;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+}
+

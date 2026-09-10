@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time OpenStreetMap Location</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Real-Time OpenStreetMap Location</h2>
+    <div id="map" aria-label="Real-time location map"></div>
+    <p id="location-status" role="status">Requesting your location...</p>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            const statusElement = document.getElementById("location-status");
+            map = L.map("map").setView([14.5995, 120.9842], 5);
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            if (!navigator.geolocation) {
+                statusElement.textContent = "Geolocation is not supported by this browser.";
+                return;
+            }
+
+            navigator.geolocation.watchPosition(function(position) {
+                let location = [
+                    position.coords.latitude,
+                    position.coords.longitude
+                ];
+
+                if (!marker) {
+                    marker = L.marker(location).addTo(map);
+                    marker.bindPopup("Your current location");
+                } else {
+                    marker.setLatLng(location);
+                }
+
+                map.setView(location, 15);
+                statusElement.textContent = "Live location updated.";
+            }, function(error) {
+                statusElement.textContent = "Unable to read location: " + error.message;
+            }, {
+                enableHighAccuracy: true,
+                maximumAge: 10000,
+                timeout: 10000
+            });
+        }
+
+        initMap();
+    </script>
+</body>
+</html>
